@@ -1,5 +1,5 @@
 # CreditApp
-Pobranie i uruchomienie kontenerów:__
+Pobranie i uruchomienie kontenerów:<br />
 W katalogu głównym projektu znajduje się plik docker-compose.yml
 Należy wydać polecenie docker-compose build, a następnie docker-compose up.
 Baza działa na domyślnym porcie 5432.
