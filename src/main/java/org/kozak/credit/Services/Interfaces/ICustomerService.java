@@ -9,6 +9,7 @@ import org.kozak.credit.Services.Exceptions.IncorrectFieldException;
 import org.kozak.credit.Services.Exceptions.PeselAlreadyUsedException;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ICustomerService {
     CustomerEntity searchCustomer(SearchCustomerDto searchCustomerDto);

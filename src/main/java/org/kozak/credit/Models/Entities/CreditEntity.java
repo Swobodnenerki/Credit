@@ -8,7 +8,7 @@ public class CreditEntity {
     private Integer creditId;
     private String creditName;
     private double value;
-    private CustomerEntity customerById;
+    private CustomerEntity customersById;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +49,6 @@ public class CreditEntity {
         CreditEntity that = (CreditEntity) o;
 
         if (creditId != that.creditId) return false;
-        if (customerById != that.customerById) return false;
         if (Double.compare(that.value, value) != 0) return false;
         if (creditName != null ? !creditName.equals(that.creditName) : that.creditName != null) return false;
 
@@ -70,11 +69,11 @@ public class CreditEntity {
     @ManyToOne
     @JoinColumn(name = "customerid", referencedColumnName = "id", nullable = false)
     public CustomerEntity getCustomersById() {
-        return customerById;
+        return customersById;
     }
 
     public void setCustomersById(CustomerEntity customerById) {
-        this.customerById = customerById;
+        this.customersById = customerById;
     }
 }
 

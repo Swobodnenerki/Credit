@@ -6,16 +6,18 @@ import org.kozak.credit.Models.Entities.CustomerEntity;
 import org.kozak.credit.Models.DTOs.Requests.SearchCustomerDto;
 import org.kozak.credit.Services.Exceptions.IncorrectFieldException;
 import org.kozak.credit.Services.Exceptions.PeselAlreadyUsedException;
-import org.kozak.credit.Services.Implementation.CustomerService;
+import org.kozak.credit.Services.Interfaces.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
     @Autowired
-    CustomerService customerService;
+    ICustomerService customerService;
 
     @GetMapping("/search")
     public CustomerEntity searchCustomer(@RequestBody SearchCustomerDto searchCustomerDto){

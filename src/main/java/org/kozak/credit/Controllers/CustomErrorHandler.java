@@ -15,18 +15,11 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class CustomErrorHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({IncorrectFieldException.class})
+    @ExceptionHandler({IncorrectFieldException.class, PeselAlreadyUsedException.class})
     public ResponseEntity<ErrorResponse> incorrect(Exception ex, WebRequest request) {
         ErrorResponse response = new ErrorResponse(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler({PeselAlreadyUsedException.class})
-    public ResponseEntity<ErrorResponse> alreadyUsedHandle(Exception ex, WebRequest request) {
-        ErrorResponse response = new ErrorResponse(LocalDateTime.now(), HttpStatus.NOT_ACCEPTABLE.value(),
-                ex.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
     }
 
 }

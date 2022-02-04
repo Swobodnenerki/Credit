@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class CreditService implements ICreditService {
@@ -36,8 +37,7 @@ public class CreditService implements ICreditService {
             newCustomer.setPesel(creditDto.getPesel());
             newCustomer.setFirstName(creditDto.getFirstName());
             newCustomer.setLastName(creditDto.getLastName());
-            var newCustomerId = customerService.createCustomer(newCustomer);
-            this.createCredit(creditDto);
+            customerService.createCustomer(newCustomer);
         }
         if(creditDto.getCreditName() == null || creditDto.getCreditName().length() > 30 || creditDto.getCreditName() == "")
             throw new IncorrectFieldException("Credit name is incorrect");
@@ -48,6 +48,7 @@ public class CreditService implements ICreditService {
             newCredit.setCreditName(creditDto.getCreditName());
             newCredit.setValue(creditDto.getValue());
             newCredit.setCustomersById(customer);
+            System.out.println(customer.getId());
             var savedCredit = creditDao.saveAndFlush(newCredit);
             return savedCredit.getCreditId();
         }
