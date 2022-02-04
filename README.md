@@ -28,4 +28,4 @@ POST http://localhost:8074/customer/<br />
         "lastName": "Kowalski",<br />
         "pesel": "75042007150"<br />
 }<br />
-W folderze db znajduje się plik sql z modelem bazy danych.<br />
+
