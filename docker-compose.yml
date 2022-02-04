@@ -7,7 +7,7 @@ services:
     build:
       context: .
     ports:
-    - 8080:8080
+    - 8074:8080
     container_name: creditapplication
     depends_on:
       - db
@@ -15,7 +15,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/creditdb
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.PostgreSQLDialect
 
 
   db:
