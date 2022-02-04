@@ -1,17 +1,30 @@
+
 version: '3.9'
+
 services:
-  web:
-    build: .
+  app:
+    image: 'credit:latest'
+    build:
+      context: .
     ports:
-      - 8080:8080
+    - 8080:8080
+    container_name: creditapplication
     depends_on:
       - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/creditdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+
   db:
-    image: library/postgres:14
+    image: postgres:14
     restart: always
     environment:
-      POSTGRES_PASSWORD: kozakiewicz41
-      POSTGRES_DB: Credit
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: creditdb
     volumes:
       - "./data:/var/lib/postgresql/data"
     ports:
